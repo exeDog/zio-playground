@@ -10,7 +10,7 @@ object main extends scala.App {
       _ <- putStrLn("Hello what is your name")
       name <- getStrLn
       _ <- putStrLn(s"Hello $name")
-      _ <- ZIO.effect(throw new RuntimeException("Error"))
+      _ <- ZIO.effect(throw new RuntimeException("Error")).mapError(e => e.getMessage)
       _ <- putStrLn("-" * 100)
 
     } yield ()
